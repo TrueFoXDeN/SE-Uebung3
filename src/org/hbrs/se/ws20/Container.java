@@ -5,7 +5,17 @@ import java.util.LinkedList;
 public class Container {
     private LinkedList<Member> list = new LinkedList<>();
 
+    private static Container container;
+    private Container(){}
 
+    public static Container getContainerInstance(){
+        if(container == null){
+            container = new Container();
+            return container;
+        }else{
+            return container;
+        }
+    }
     public void addMember(Member member) throws ContainerException{
 
         if (!contains(member.getID())) {

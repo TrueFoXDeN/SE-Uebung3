@@ -1,6 +1,6 @@
 package org.hbrs.se.ws20;
 
-public class MemberObject implements org.hbrs.se.ws2020.uebung2.Member {
+public class MemberObject implements Member {
     private int id;
 
     public MemberObject(int id){
