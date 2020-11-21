@@ -27,7 +27,7 @@ public class PersistenceStrategyStream<Member> implements PersistenceStrategy<Me
             oos.writeObject(l);
             oos.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new PersistenceException(PersistenceException.ExceptionType.SaveFailure, "IOException occurred.");
         }
     }
 
@@ -51,29 +51,12 @@ public class PersistenceStrategyStream<Member> implements PersistenceStrategy<Me
                 ois.close();
                 return l;
             } catch (ClassNotFoundException e) {
-                e.printStackTrace();
+                throw new PersistenceException(PersistenceException.ExceptionType.LoadFailure, "ClassNotFoundException occurred.");
             }
 
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new PersistenceException(PersistenceException.ExceptionType.LoadFailure, "IOException occurred.");
         }
-        // Some Coding hints ;-)
-        // ObjectInputStream ois = null;
-        // FileInputStream fis = null;
-        // List<...> newListe =  null;
-        //
-        // Initiating the Stream (can also be moved to method openConnection()... ;-)
-        // fis = new FileInputStream( " a location to a file" );
-        // ois = new ObjectInputStream(fis);
 
-        // Reading and extracting the list (try .. catch ommitted here)
-        // Object obj = ois.readObject();
-
-        // if (obj instanceof List<?>) {
-        //       newListe = (List) obj;
-        // return newListe
-
-        // and finally close the streams (guess where this could be...?)
-        return null;
     }
 }
