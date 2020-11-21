@@ -1,9 +1,11 @@
 package org.hbrs.se.ws20;
 
 import java.util.LinkedList;
+import java.util.List;
 
-public class Container {
+public class Container{
     private LinkedList<Member> list = new LinkedList<>();
+    private PersistenceStrategy<Member> persistenceStrategy;
 
     private static Container container;
     private Container(){}
@@ -16,6 +18,15 @@ public class Container {
             return container;
         }
     }
+
+    public void store() throws PersistenceException{
+        persistenceStrategy.save(list);
+    }
+
+    public void load() throws PersistenceException{
+        list = (LinkedList<Member>) persistenceStrategy.load();
+    }
+
     public void addMember(Member member) throws ContainerException{
 
         if (!contains(member.getID())) {
@@ -49,6 +60,10 @@ public class Container {
 
         return "Member (ID = ["+id+"]) not found";
 
+    }
+
+    public void setPersistenceStrategy(PersistenceStrategy<Member> persistenceStrategy) {
+        this.persistenceStrategy = persistenceStrategy;
     }
 
     /**
