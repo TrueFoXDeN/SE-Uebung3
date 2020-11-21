@@ -6,6 +6,7 @@ import java.util.List;
 public class Container{
     private LinkedList<Member> list = new LinkedList<>();
     private PersistenceStrategy<Member> persistenceStrategy;
+    private MemberView memberView = new MemberView();
 
     private static Container container;
     private Container(){}
@@ -78,12 +79,8 @@ public class Container{
 
 
 
-
-
-    public void dump() {
-        for(Member m : list){
-            System.out.println(m);
-        }
+    public List<Member> getCurrentList(){
+        return list;
     }
 
     public int size() {
