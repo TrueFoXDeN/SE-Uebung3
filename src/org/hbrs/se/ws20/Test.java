@@ -20,6 +20,11 @@ public class Test {
 
         try {
             c.store();
+            c.deleteMember(m.getID());
+            c.deleteMember(m2.getID());
+            c.deleteMember(m3.getID());
+            c.dump();
+            System.out.println("----------------");
             c.load();
             c.dump();
         } catch (PersistenceException e) {

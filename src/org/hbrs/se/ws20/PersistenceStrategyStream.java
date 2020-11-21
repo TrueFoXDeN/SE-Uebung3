@@ -23,7 +23,7 @@ public class PersistenceStrategyStream<Member> implements PersistenceStrategy<Me
         try {
             FileOutputStream fos = new FileOutputStream("save.txt");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
-            LinkedList<Member> l = (LinkedList<Member>) member;
+            List l = member;
             oos.writeObject(l);
             oos.close();
         } catch (IOException e) {

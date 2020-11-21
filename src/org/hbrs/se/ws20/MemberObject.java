@@ -1,6 +1,8 @@
 package org.hbrs.se.ws20;
 
-public class MemberObject implements Member {
+import java.io.Serializable;
+
+public class MemberObject implements Member, Serializable {
     private int id;
 
     public MemberObject(int id){
