@@ -29,13 +29,15 @@ public class Container{
     }
 
     public void addMember(Member member) throws ContainerException{
+        if(member != null){
+            if (!contains(member.getID())) {
+                list.add(member);
+            } else {
+                throw new ContainerException("Das Member-Objekt mit der ID ["+member.getID()+"] ist bereits vorhanden!");
 
-        if (!contains(member.getID())) {
-            list.add(member);
-        } else {
-            throw new ContainerException("Das Member-Objekt mit der ID ["+member.getID()+"] ist bereits vorhanden!");
-
+            }
         }
+
     }
 
     private boolean contains(int id) {

@@ -34,9 +34,16 @@ class ContainerTest {
             try {
                 c.addMember(member[i]);
                 assertEquals(i + 1, c.size());
+
             } catch (ContainerException e) {
                 e.printStackTrace();
             }
+        }
+        try {
+            c.addMember(null);
+            assertThrows(ContainerException.class, () -> {c.addMember(member[0]);});
+        } catch (ContainerException e) {
+            e.printStackTrace();
         }
 
     }
@@ -54,6 +61,8 @@ class ContainerTest {
             assertEquals("Member (ID = ["+i+"]) deleted", c.deleteMember(i));
             assertEquals(member.length - 1 - i, c.size());
         }
+
+        assertEquals("Member (ID = [0]) not found", c.deleteMember(0));
     }
 
     @Test
