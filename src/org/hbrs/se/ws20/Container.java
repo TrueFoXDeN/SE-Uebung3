@@ -77,7 +77,9 @@ public class Container{
      * daher sollte die Rückgabe mit der equals-Methode erfolgen.
      */
 
-
+    public void clearList(){
+        list.clear();
+    }
 
     public List<Member> getCurrentList(){
         return list;
